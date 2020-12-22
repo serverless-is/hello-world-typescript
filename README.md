@@ -73,7 +73,20 @@ Library | Version | Notes
    sls invoke local --function hello
   ```
 
-3. Deploy the service(defined in your current working directory) to AWS as lambda function and invoking event as REST End point via AWS API gateway.
+3. Run `serverless offline` command to start the Lambda/API simulation.
+
+  ```bash
+  sls offline
+
+  or
+
+  sls offline start
+
+  // Test the AWS lambda function locally via emulated API gateway.
+  GET - http://localhost:3000/dev/greet
+  ```
+
+4. Deploy the service(defined in your current working directory) to AWS as lambda function and invoking event as REST End point via AWS API gateway.
 
   ```bash
  // deploy to default stage (dev) and default region (us-east-1). 
@@ -83,19 +96,19 @@ Library | Version | Notes
  sls deploy --stage production --region us-west-1
   ```
 
-4. Test the AWS lambda function.
+5. Test the AWS lambda function.
 
   ```bash
  sls invoke -f hello
   ```
 
-5. Test the AWS lambda function via Trigger events (i.e) REST API End Points.
+6. Test the AWS lambda function via Trigger events (i.e) REST API End Points.
 
   ```bash
- GET - https://9yo7rtqtv7.execute-api.us-east-1.amazonaws.com/dev/wish
+ GET - https://wvz961twj2.execute-api.us-east-1.amazonaws.com/dev/greet
   ```
 
-6. If there are changes only to the functions(handler) and no changes to infrastructure(serverless.yml), then deploy only the function(no AWS cloudformation changes). This is a much faster way of deploying changes in code.
+7. If there are changes only to the functions(handler) and no changes to infrastructure(serverless.yml), then deploy only the function(no AWS cloudformation changes). This is a much faster way of deploying changes in code.
 
   ```bash
  sls deploy function -f hello
@@ -107,7 +120,7 @@ Library | Version | Notes
  sls deploy function -f hello --update-config
   ```
 
-7. To list information about your deployments.
+8. To list information about your deployments.
 
   ```bash
  // List existing deploys 
@@ -117,13 +130,13 @@ Library | Version | Notes
  sls deploy list functions
   ```
 
-8. To list information about the deployed service.
+9. To list information about the deployed service.
 
   ```bash
  sls deploy info
   ```
 
-9. To watch the logs of a specific function.
+10. To watch the logs of a specific function.
 
   ```bash
   sls logs -f hello
@@ -135,7 +148,7 @@ Library | Version | Notes
   serverless logs -f hello --filter serverless
   ``` 
 
-10. To remove the deployed service, defined in your current working directory
+11. To remove the deployed service, defined in your current working directory
 
   ```bash
  sls remove
@@ -144,7 +157,7 @@ Library | Version | Notes
  sls remove --stage dev --region us-east-1
   ```
 
-11. To Rollback a service to a specific deployment using timestamp
+12. To Rollback a service to a specific deployment using timestamp
 
   ```bash
  sls rollback -t timestamp
@@ -195,9 +208,9 @@ Library | Version | Notes
 
   serverless-offline: This Serverless plugin emulates AWS Lambda and API Gateway on your local machine to speed up your development cycles. To do so, it starts an HTTP server that handles the request's lifecycle like APIG does and invokes your handlers.
 
-1. On running the `sls deploy` command, will automatically compile the Typescript to JavaScript and creates an AWS Lambda function `hello-world-typescript-dev-hello` and a REST API via AWS API Gateway `dev-hello-world-typescript` with endpoints `https://9yo7rtqtv7.execute-api.us-east-1.amazonaws.com/dev/greet`
+1. On running the `sls deploy` command, will automatically compile the Typescript to JavaScript and creates an AWS Lambda function `hello-world-typescript-dev-hello` and a REST API via AWS API Gateway `dev-hello-world-typescript` with endpoints `https://wvz961twj2.execute-api.us-east-1.amazonaws.com/dev/greet`
 
-1. Run serverless offline or serverless offline start to start the Lambda/API simulation.
+1. Run `serverless offline` command to start the Lambda/API simulation.
 
   ```bash
   sls offline
@@ -205,6 +218,9 @@ Library | Version | Notes
   or
 
   sls offline start
+
+  // Test the AWS lambda function locally via emulated API gateway.
+  GET - http://localhost:3000/dev/greet
   ```
 
 ## Status and Issues

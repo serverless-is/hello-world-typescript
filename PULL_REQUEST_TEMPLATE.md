@@ -23,7 +23,7 @@ sls invoke -f hello
 - Invoke the AWS Lambda function via REST End Point
 
 ```bash
-GET - https://9yo7rtqtv7.execute-api.us-east-1.amazonaws.com/dev/greet
+GET - https://wvz961twj2.execute-api.us-east-1.amazonaws.com/dev/greet
 ```
 
 ## What to check
